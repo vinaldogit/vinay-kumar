@@ -40,8 +40,8 @@ The **AI Intern Project** is a comprehensive Python-based tool that allows users
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/vinaldogit/vinay-kumar/wasserstoff/AIInternTask.git
-    cd AIInternTask
+    git clone https://github.com/vinaldogit/vinay-kumar.git
+    cd vinay-kumar/wasserstoff/AiInternTask
     ```
 
 2. Install the required dependencies:
@@ -64,6 +64,7 @@ The **AI Intern Project** is a comprehensive Python-based tool that allows users
 
 ## Project Structure
 
+```
 AI Intern Project/
 │
 ├── data/
@@ -88,6 +89,7 @@ AI Intern Project/
 ├── presentation.pptx               # Project presentation
 ├── requirements.txt                # Python dependencies
 └── README.md                       # Markdown File
+```
 
 ## Technologies
 
