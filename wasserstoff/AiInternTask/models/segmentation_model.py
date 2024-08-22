@@ -25,7 +25,11 @@ class SegmentationModel:
         self.ocr_reader = easyocr.Reader(['en'])
 
     def loadImage(self, imagePath):
+        # Saving image path for processing fresh image
         self.imagePath = imagePath
+        
+        # Old data cleaning for process
+        self.cleaning()
     
     def execute(self):
         self.imagePreprocessing()
@@ -128,3 +132,17 @@ class SegmentationModel:
 
         conn.commit()
         conn.close()
+        
+    def cleaning(self):
+        # Clean the directories if old data is there
+        directory_path = "data/segmented_objects"
+        for file_name in os.listdir(directory_path):
+            file_path = os.path.join(directory_path, file_name)
+            if os.path.isfile(file_path):
+              os.remove(file_path)
+        
+        directory_path = "data/output"
+        for file_name in os.listdir(directory_path):
+            file_path = os.path.join(directory_path, file_name)
+            if os.path.isfile(file_path):
+              os.remove(file_path)

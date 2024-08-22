@@ -7,10 +7,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import streamlit as st
 from PIL import Image
-from tests import test_segmentation
-from tests import test_identification
-from tests import test_text_extraction
-from tests import test_summarization
+from tests_ import test_identification
+from tests_ import test_segmentation
+from tests_ import test_text_extraction
+from tests_ import test_summarization
 from utils import data_mapping
 from utils import visualization
 
@@ -31,6 +31,9 @@ if __name__ == "__main__":
         orig_image_file_loaded = True
         orig_image_file_name = orig_image_file.name
         
+        # Upload on disk (it will create one if not already present)
+        test_segmentation.preprocess_uploaded_image(orig_image_file_name, orig_image_file.read())
+        
         # Display the image
         st.write("Image file loaded successfully")
         st.image(image, caption="Upload Image", use_column_width=True)
@@ -41,7 +44,7 @@ if __name__ == "__main__":
             st.write("Input image is missing! Reselect the image and run test again")
         else:
             # Run segmentation test
-            if test_segmentation.run_segmentation_model_test(orig_image_file_name):
+            if test_segmentation.run_segmentation_model(orig_image_file_name):
                 st.write("Segmentation Model Testing Complete! See results in data directory")
             else:
                 st.write("ERROR! Image not present in the data/input_images directory")
