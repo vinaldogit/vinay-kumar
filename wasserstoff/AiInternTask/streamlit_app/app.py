@@ -32,11 +32,14 @@ if __name__ == "__main__":
         orig_image_file_name = orig_image_file.name
         
         # Upload on disk (it will create one if not already present)
-        test_segmentation.preprocess_uploaded_image(orig_image_file_name, orig_image_file.read())
-        
+        image_data = orig_image_file.getbuffer()
+        test_segmentation.preprocess_uploaded_image(orig_image_file_name, image_data)
+
         # Display the image
         st.write("Image file loaded successfully")
         st.image(image, caption="Upload Image", use_column_width=True)
+
+    st.write("RUN MODELS ONE BY ONE USING THE BUTTONS BELOW")
 
     # Create a button to run segmentation model testing
     if st.button("Test Segmentation Model"):
